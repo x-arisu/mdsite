@@ -185,10 +185,3 @@ label, legend, fieldset {
   display: block;
   margin-bottom: .5rem;
   font-weight: 600; }
-.center-text {
-	text-align: center;
-}
-.center {
-	margin: 0 auto;
-	display: block
-}
