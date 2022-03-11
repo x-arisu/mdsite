@@ -46,7 +46,7 @@ elseif (is_dir($path . $_GET["page"]) && (!is_file($path . $_GET["page"] . "/ind
 	echo "<ul>";
 	foreach (scandir($path . $_GET["page"], 1) as $item){
 		if ($item == "." || $item == ".." || $item == "header.md" || $item == "footer.md") { continue; }
-		elseif ((is_file($path . $_GET["page"] . '/' . $item) && (!pathinfo($path . $_GET["page"] . '/' . $item)['extension'] == "md"))) { continue; }
+		elseif ((is_file($path . $_GET["page"] . '/' . $item) && (pathinfo($path . $_GET["page"] . '/' . $item)['extension'] != "md"))) { continue; }
 		echo "<li><a href=\"?page=" . $_GET["page"] . '/' . pathinfo($path . $_GET["page"] . '/' . $item)['filename'] . "\">" . pathinfo($path . $_GET["page"] . '/' . $item)['filename'] . "</a></li>";
 	}
 	echo "</ul>";
