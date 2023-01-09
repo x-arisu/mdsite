@@ -37,6 +37,19 @@ if ($Nav != "" && is_file($path . $Nav . ".md")){
 }
 //no path set, direct to index
 if (empty($_GET["page"])) { $_GET["page"] = "index"; } 
+elseif (is_dir($path . $_GET["page"]) && (!is_file($path . $_GET["page"] . "/index.md")) && (str_contains($_GET["page"], "screenshots_"))) {
+	foreach (scandir($path . $_GET["page"], 1) as $item){
+		if ($item == "." || $item == ".." || $item == "header.md" || $item == "footer.md" || is_dir($path . $_GET["page"] . "/" . $item)) { continue; }
+		if (!is_file($path . $_GET["page"] . "/thumbs/" . $item))
+		{	
+			shell_exec("/usr/bin/ffmpeg -i " . $path . $_GET["page"] . "/". $item . " -vf scale=250:140,crop=140:140 " . $path . $_GET["page"] ."/thumbs/" . $item);
+		}
+		echo "<a href=\"" . $_GET["page"] . "/" . $item . "\">";
+		echo "<img style=\"float: left; margin: 8px 15px;\" src=\"/" . $_GET["page"] . "/thumbs/" . $item . "\">";
+		echo "</a>";
+	}
+
+}
 //A directory without an index, lists other MD files and directorys 
 elseif (is_dir($path . $_GET["page"]) && (!is_file($path . $_GET["page"] . "/index.md"))) {
 	if (is_file($path . $_GET["page"] . "/header.md")){
