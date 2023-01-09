@@ -31,3 +31,4 @@ Directories without an `index.md` can have a `header.md` and/or `footer.md`, whi
 
 #### Updating your site
 Updating is as simple as dowloading the latest `index.php` and updating your config if needed.
+test
