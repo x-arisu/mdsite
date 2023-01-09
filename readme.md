@@ -29,6 +29,9 @@ Another issue is mobile friendliness. While mdsite isn't perfect in this regard,
 #### Things to note
 Directories without an `index.md` can have a `header.md` and/or `footer.md`, which will be added to the directory listing page. Directories only list markdown files and directories.
 
+### Screenshot directories
+I wanted a screenshot gallery for games so if a directory starts with "screenshots_" it will be treated as such.
+It expects a directory called thumbs in it as well. Then you just drop images in the folder and everything will be generated.
+
 #### Updating your site
 Updating is as simple as dowloading the latest `index.php` and updating your config if needed.
-test
